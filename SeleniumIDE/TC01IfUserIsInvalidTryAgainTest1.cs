@@ -16,12 +16,15 @@ public class TC01IfUserIsInvalidTryAgainTest
 {
     private IWebDriver driver;
     public IDictionary<string, object> vars { get; private set; }
+    private ChromeOptions _options;
     private IJavaScriptExecutor js;
 
     [SetUp]
     public void SetUp()
     {
-        driver = new ChromeDriver();
+        _options = new ChromeOptions();
+        _options.AddArgument("headless");
+        driver = new ChromeDriver(_options);
         js = (IJavaScriptExecutor)driver;
         vars = new Dictionary<string, object>();
     }
